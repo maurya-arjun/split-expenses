@@ -35,25 +35,42 @@ function App() {
   }
 
   return (
-    <div className="App" style={{ margin: "10px" }}>
-      <Friends
-        friendList={friendList}
-        onSelection={handleSelection}
-        selectedFriend={selectedFriend}
-      />
+    <div>
+      <header className="py-6">
+        <h1 className="text-3xl font-bold text-gray-800 text-center">
+          Split Bills with Friends
+        </h1>
+      </header>
+      <div className="p-4 md:flex md:gap-6 md:max-w-7xl md:mx-auto">
+        <div className="md:w-1/2 flex flex-col gap-4">
+          <Friends
+            friendList={friendList}
+            onSelection={handleSelection}
+            selectedFriend={selectedFriend}
+          />
 
-      {showFriendAddForm && (
-        <FriendAddForm friendList={friendList} onAddFriend={handleAddFriend} />
-      )}
+          {showFriendAddForm && (
+            <FriendAddForm
+              friendList={friendList}
+              onAddFriend={handleAddFriend}
+            />
+          )}
 
-      <Button onClick={handleShowAddFriendFrom}>
-        {" "}
-        {showFriendAddForm ? "Close" : "Add Friend"}{" "}
-      </Button>
+          <Button onClick={handleShowAddFriendFrom}>
+            {" "}
+            {showFriendAddForm ? "Close" : "Add Friend"}{" "}
+          </Button>
+        </div>
 
-      {selectedFriend && (
-        <FormSplitBill selectedFriend={selectedFriend} onSplit={handleSplit} />
-      )}
+        {selectedFriend && (
+          <div className="md:w-1/2 mt-6 md:mt-0">
+            <FormSplitBill
+              selectedFriend={selectedFriend}
+              onSplit={handleSplit}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -77,18 +94,6 @@ const initialFriend = [
     image: "https://i.pravatar.cc/50/1543",
     balance: 0.0,
   },
-  /* {
-    id: 4,
-    name: "Sneha Gupta",
-    image: "https://picsum.photos/50",
-    balance: 100.5,
-  },
-  {
-    id: 5,
-    name: "Vikram Singh",
-    image: "https://picsum.photos/50",
-    balance: -10.25,
-  }, */
 ];
 
 export default App;

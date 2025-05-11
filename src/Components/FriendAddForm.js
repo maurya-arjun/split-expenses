@@ -24,22 +24,30 @@ const FriendAddForm = ({ onAddFriend }) => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleFormSubmit}>
-        <div>
-          <label>👯‍♂️ Friend Name</label>
+    <div className="p-6 bg-white rounded-lg shadow-md">
+      <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-gray-700">
+            👯‍♂️ Friend Name
+          </label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className="w-full p-2 border rounded-md"
+            placeholder="Enter friend name"
           />
         </div>
-        <div>
-          <label>🌅 Image Url</label>
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-gray-700">
+            🌅 Image Url
+          </label>
           <input
             type="text"
             value={image}
             onChange={(e) => setimage(e.target.value)}
+            className="w-full p-2 border rounded-md"
+            placeholder="Enter image URL"
           />
         </div>
         <Button>Add</Button>
